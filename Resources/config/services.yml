@@ -1,0 +1,11 @@
+parameters:
+    elysion.qualitelis.manager.qualitelis: 'Elysion\QualitelisConnectorBundle\Manager\QualitelisManager'
+    elysion.qualitelis.model.comment: Elysion\QualitelisConnectorBundle\Model\Comment
+    elysion.qualitelis.model.prestataire: Elysion\QualitelisConnectorBundle\Model\Prestataire
+
+services:
+    elysion.qualitelis.manager:
+        class: '%elysion.qualitelis.manager.qualitelis%'
+        arguments:
+            - '@elysion.qualitelis.denormalizer.prestataire'
+            - '@elysion.qualitelis.denormalizer.all_prestataires'

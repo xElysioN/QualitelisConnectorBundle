@@ -1,0 +1,29 @@
+{
+    "name": "xelysion/qualitelis-connector-bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "description": "",
+    "keywords": [
+        "qualitelis",
+        "qualitelis connector"
+    ],
+    "authors": [
+        {
+            "name": "Maxime CORNET",
+            "email": "mcornet@altima-agency.com"
+        }
+    ],
+    "require": {
+        "php": "^5.6|^7.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/config": "^2.8",
+        "symfony/dependency-injection": "^2.8"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.0",
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": { "Elysion\\QualitelisConnectorBundle\\": "" }
+    }
+}
