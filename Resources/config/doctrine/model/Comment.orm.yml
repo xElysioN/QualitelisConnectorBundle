@@ -1,0 +1,65 @@
+Elysion\QualitelisConnectorBundle\Model\Comment:
+    type: mappedSuperclass
+    fields:
+         firstName:
+            type: string
+            column: firstname
+            nullable: true
+         lastName:
+            type: string
+            column: lastname
+            nullable: true
+         stayStart:
+            type: datetime
+            column: stay_start
+            nullable: true
+         stayEnd:
+            type: datetime
+            column: stay_end
+            nullable: true
+         replyDate:
+            type: datetime
+            column: reply_date
+            nullable: true
+         note:
+            type: integer
+            column: note
+            nullable: true
+         comment:
+            type: text
+            column: comment
+            nullable: true
+         commentTitle:
+            type: string
+            column: comment_title
+            nullable: true    
+         pinned:
+            type: boolean
+            column: pinned
+            options:
+                default: false
+         profile1:
+            type: string
+            column: profile1
+            nullable: true 
+         profile2:
+            type: string
+            column: profile2
+            nullable: true    
+         profile3:
+            type: string
+            column: profile3
+            nullable: true    
+         idSejour:
+            type: integer
+            column: id_sejour
+            length: 150
+            nullable: true
+         replyMail:
+            nullable: true
+            column: reply_mail
+            nullable: true
+         language:
+            type: string
+            column: language
+            nullable: true 

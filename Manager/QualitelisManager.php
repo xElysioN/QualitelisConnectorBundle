@@ -27,7 +27,7 @@ use Symfony\Component\Serializer\Serializer;
  *
  * @author  Maxime Cornet <mcornet@altima-agency.com>
  */
-class QualitelisManager
+final class QualitelisManager
 {
     const ALL_PRESTA_GROUP_URL = 'http://www.qualitelis-survey.com/api/Comments/AllPrestaGroup';
     const GROUP_URL = 'http://www.qualitelis-survey.com/api/Comments/Group';
@@ -44,19 +44,31 @@ class QualitelisManager
     /** @var AllPrestatairesDenormalizer $allPrestataireDenormalizer */
     private $allPrestataireDenormalizer;
 
+    /** @var string $prestataireClass */
+    private $prestataireClass;
+
+    /** @var string $commentClass */
+    private $commentClass;
+
     /**
      * QualitelisManager constructor.
      *
      * @param PrestataireDenormalizer     $prestataireDenormalizer
      * @param AllPrestatairesDenormalizer $allPrestataireDenormalizer
+     * @param string                      $prestataireClass
+     * @param string                      $commentClass
      */
     public function __construct(
         PrestataireDenormalizer $prestataireDenormalizer,
-        AllPrestatairesDenormalizer $allPrestataireDenormalizer
+        AllPrestatairesDenormalizer $allPrestataireDenormalizer,
+        $prestataireClass,
+        $commentClass
     ) {
         $this->client = new Client();
         $this->prestataireDenormalizer = $prestataireDenormalizer;
         $this->allPrestataireDenormalizer = $allPrestataireDenormalizer;
+        $this->prestataireClass = $prestataireClass;
+        $this->commentClass = $commentClass;
     }
 
     /**
@@ -101,7 +113,7 @@ class QualitelisManager
      * @param array|string $lang
      * @param array|string $visitorLanguage
      */
-    protected function addLanguage($lang = 'EN', $visitorLanguage = 'all')
+    private function addLanguage($lang = 'EN', $visitorLanguage = 'all')
     {
         $this->addQuery('Langue', $lang);
         $this->addQuery('VisitorLanguage', $visitorLanguage);
@@ -155,7 +167,7 @@ class QualitelisManager
         $context = [];
         if ($idContractor) {
             $normalizers = [$this->prestataireDenormalizer];
-            $type = 'Elysion\QualitelisConnectorBundle\Model\Prestataire';
+            $type = $this->prestataireClass;
             $context['idContractor'] = $idContractor;
         } else {
             $normalizers = [$this->allPrestataireDenormalizer];
@@ -182,7 +194,7 @@ class QualitelisManager
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    protected function get($url)
+    private function get($url)
     {
         try {
             /** @var \Psr\Http\Message\ResponseInterface $response */
@@ -211,7 +223,7 @@ class QualitelisManager
      *
      * @return null|string
      */
-    protected function getJson($url)
+    private function getJson($url)
     {
         $response = $this->get($url);
 

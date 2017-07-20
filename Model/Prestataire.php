@@ -16,7 +16,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Class Prestataire.
  *
- * @author  Maxime Cornet <xelysion@icloud.com>
+ * @author Maxime Cornet <xelysion@icloud.com>
  */
 class Prestataire implements PrestataireInterface
 {
@@ -111,6 +111,24 @@ class Prestataire implements PrestataireInterface
     public function setComments($comments)
     {
         $this->comments = $comments;
+    }
+
+    /**
+     * @param Comment $comment
+     */
+    public function addComment(Comment $comment)
+    {
+        $comment->setPrestataire($this);
+        $this->comments->add($comment);
+    }
+
+    /**
+     * @param Comment $comment
+     */
+    public function removeComment(Comment $comment)
+    {
+        $comment->setPrestataire($this);
+        $this->comments->remove($comment);
     }
 
     /**

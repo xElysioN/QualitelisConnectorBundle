@@ -39,10 +39,14 @@ abstract class AbstractPrestataireDenormalizer implements DenormalizerInterface
         'profile3',
         'idSejour',
         'replyMail',
+        'language',
     ];
 
     /** @var string $entityClass */
     protected $entityClass;
+
+    /** @var string $commentClass */
+    protected $commentClass;
 
     /** @var array $attributes */
     protected $attributes = [
@@ -57,10 +61,12 @@ abstract class AbstractPrestataireDenormalizer implements DenormalizerInterface
      * PrestataireDenormalizer constructor.
      *
      * @param string $entityClass
+     * @param string $commentClass
      */
-    public function __construct($entityClass)
+    public function __construct($entityClass, $commentClass)
     {
         $this->entityClass = $entityClass;
+        $this->commentClass = $commentClass;
     }
 
     /**
@@ -68,7 +74,8 @@ abstract class AbstractPrestataireDenormalizer implements DenormalizerInterface
      */
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $prestataire = new Prestataire();
+        /** @var Prestataire $prestataire */
+        $prestataire = new $this->entityClass();
 
         foreach ($this->attributes as $attribute) {
             if (array_key_exists($attribute, $data)) {
@@ -83,7 +90,7 @@ abstract class AbstractPrestataireDenormalizer implements DenormalizerInterface
             $comments = $prestataire->getComments();
 
             foreach ($data['comments'] as $commentArray) {
-                $comments->add($this->denormalizeComment($commentArray));
+                $comments->add($this->denormalizeComment($commentArray, $prestataire));
             }
         }
 
@@ -105,13 +112,17 @@ abstract class AbstractPrestataireDenormalizer implements DenormalizerInterface
     /**
      * Denormalize Comments.
      *
-     * @param array $data
+     * @param array       $data
+     * @param Prestataire $prestataire
      *
      * @return Comment
      */
-    public function denormalizeComment($data)
+    public function denormalizeComment($data, Prestataire $prestataire)
     {
-        $comment = new Comment();
+        /** @var Comment $comment */
+        $comment = new $this->commentClass();
+
+        $comment->setPrestataire($prestataire);
 
         /** @var string $attribute */
         foreach (self::commentAttributes as $attribute) {

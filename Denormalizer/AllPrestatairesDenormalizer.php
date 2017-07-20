@@ -24,9 +24,9 @@ class AllPrestatairesDenormalizer extends AbstractPrestataireDenormalizer
     /**
      * {@inheritdoc}
      */
-    public function __construct($entityClass)
+    public function __construct($entityClass, $commentClass)
     {
-        parent::__construct($entityClass);
+        parent::__construct($entityClass, $commentClass);
         $this->attributes[] = 'idPrestataire';
     }
 
@@ -54,7 +54,7 @@ class AllPrestatairesDenormalizer extends AbstractPrestataireDenormalizer
                $comments = $prestataire->getComments();
 
                foreach ($col['comments'] as $commentArray) {
-                   $comments->add($this->denormalizeComment($commentArray));
+                   $comments->add($this->denormalizeComment($commentArray, $prestataire));
                }
            }
 

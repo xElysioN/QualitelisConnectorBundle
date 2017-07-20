@@ -1,0 +1,30 @@
+Elysion\QualitelisConnectorBundle\Model\Prestataire:
+    type: mappedSuperclass
+    fields:
+        idPrestataire:
+            type: integer
+            column: id_prestataire
+            nullable: true
+            length: 150
+        nbAnsweredSurveys:
+            type: integer
+            column: nb_answered_surveys
+            nullable: true
+            length: 150
+        satisfactionAverage:
+            type: float
+            column: satisfaction_average
+            nullable: true
+            length: 150
+        tagResult:
+            column: tag_result
+            type: string
+            nullable: true
+        qiResult:
+            column: qi_result
+            type: string
+            nullable: true
+        qiSources:
+            column: qi_sources
+            type: string
+            nullable: true

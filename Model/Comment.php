@@ -18,8 +18,8 @@ namespace Elysion\QualitelisConnectorBundle\Model;
  */
 class Comment implements CommentInterface
 {
-    /** @var string $firstname */
-    protected $firstname;
+    /** @var string $firstName */
+    protected $firstName;
 
     /** @var string $lastName */
     protected $lastName;
@@ -60,20 +60,30 @@ class Comment implements CommentInterface
     /** @var string|null $replyMail */
     protected $replyMail;
 
+    /** @var Prestataire $prestataire */
+    protected $prestataire;
+
+    /** @var string $language */
+    protected $language;
+
     /**
      * @return string
      */
-    public function getFirstname()
+    public function getFirstName()
     {
-        return $this->firstname;
+        return $this->firstName;
     }
 
     /**
-     * @param string $firstname
+     * @param string $firstName
+     *
+     * @return $this
      */
-    public function setFirstname($firstname)
+    public function setFirstname($firstName)
     {
-        $this->firstname = $firstname;
+        $this->firstName = $firstName;
+
+        return $this;
     }
 
     /**
@@ -86,10 +96,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $lastName
+     *
+     * @return $this
      */
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+
+        return $this;
     }
 
     /**
@@ -102,10 +116,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $stayStart
+     *
+     * @return $this
      */
     public function setStayStart($stayStart)
     {
         $this->stayStart = \DateTime::createFromFormat('d/m/Y', $stayStart);
+
+        return $this;
     }
 
     /**
@@ -118,10 +136,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $stayEnd
+     *
+     * @return $this
      */
     public function setStayEnd($stayEnd)
     {
         $this->stayEnd = \DateTime::createFromFormat('d/m/Y', $stayEnd);
+
+        return $this;
     }
 
     /**
@@ -134,10 +156,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $replyDate
+     *
+     * @return $this
      */
     public function setReplyDate($replyDate)
     {
         $this->replyDate = \DateTime::createFromFormat('d/m/Y', $replyDate);
+
+        return $this;
     }
 
     /**
@@ -150,10 +176,14 @@ class Comment implements CommentInterface
 
     /**
      * @param int $note
+     *
+     * @return $this
      */
     public function setNote($note)
     {
         $this->note = $note;
+
+        return $this;
     }
 
     /**
@@ -166,10 +196,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $comment
+     *
+     * @return $this
      */
     public function setComment($comment)
     {
-        $this->comment = $comment;
+        $this->comment = utf8_encode($comment);
+
+        return $this;
     }
 
     /**
@@ -182,10 +216,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $commentTitle
+     *
+     * @return $this
      */
     public function setCommentTitle($commentTitle)
     {
         $this->commentTitle = $commentTitle;
+
+        return $this;
     }
 
     /**
@@ -198,10 +236,14 @@ class Comment implements CommentInterface
 
     /**
      * @param bool $pinned
+     *
+     * @return $this
      */
     public function setPinned($pinned)
     {
         $this->pinned = $pinned;
+
+        return $this;
     }
 
     /**
@@ -214,10 +256,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $profile1
+     *
+     * @return $this
      */
     public function setProfile1($profile1)
     {
         $this->profile1 = $profile1;
+
+        return $this;
     }
 
     /**
@@ -230,10 +276,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $profile2
+     *
+     * @return $this
      */
     public function setProfile2($profile2)
     {
         $this->profile2 = $profile2;
+
+        return $this;
     }
 
     /**
@@ -246,10 +296,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $profile3
+     *
+     * @return $this
      */
     public function setProfile3($profile3)
     {
         $this->profile3 = $profile3;
+
+        return $this;
     }
 
     /**
@@ -262,10 +316,14 @@ class Comment implements CommentInterface
 
     /**
      * @param string $idSejour
+     *
+     * @return $this
      */
     public function setIdSejour($idSejour)
     {
         $this->idSejour = $idSejour;
+
+        return $this;
     }
 
     /**
@@ -278,9 +336,53 @@ class Comment implements CommentInterface
 
     /**
      * @param array|null $replyMail
+     *
+     * @return $this
      */
     public function setReplyMail($replyMail)
     {
         $this->replyMail = json_encode($replyMail);
+
+        return $this;
+    }
+
+    /**
+     * @return Prestataire
+     */
+    public function getPrestataire()
+    {
+        return $this->prestataire;
+    }
+
+    /**
+     * @param string $prestataire
+     *
+     * @return $this
+     */
+    public function setPrestataire($prestataire)
+    {
+        $this->prestataire = $prestataire;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param string $language
+     *
+     * @return $this
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
     }
 }
