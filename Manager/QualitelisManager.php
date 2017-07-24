@@ -171,7 +171,7 @@ final class QualitelisManager
             $context['idContractor'] = $idContractor;
         } else {
             $normalizers = [$this->allPrestataireDenormalizer];
-            $type = 'Elysion\QualitelisConnectorBundle\Model\Prestataire[]';
+            $type = $this->prestataireClass.'[]';
         }
         $serializer = new Serializer($normalizers, $encoders);
 
