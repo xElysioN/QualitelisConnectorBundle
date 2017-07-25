@@ -22,7 +22,7 @@ Elysion\QualitelisConnectorBundle\Model\Comment:
             column: reply_date
             nullable: true
          note:
-            type: integer
+            type: float
             column: note
             nullable: true
          comment:
