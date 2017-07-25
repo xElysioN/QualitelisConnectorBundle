@@ -30,45 +30,45 @@ class AllPrestatairesDenormalizer extends AbstractPrestataireDenormalizer
         $this->attributes[] = 'idPrestataire';
     }
 
-   /**
-    * {@inheritdoc}
-    */
-   public function denormalize($data, $class, $format = null, array $context = [])
-   {
-       $obj = new ArrayCollection();
+    /**
+     * {@inheritdoc}
+     */
+    public function denormalize($data, $class, $format = null, array $context = [])
+    {
+        $obj = new ArrayCollection();
 
-       foreach ($data as $row) {
-           $prestataire = new Prestataire();
-           $col = $row['prestataire'];
+        foreach ($data as $row) {
+            $prestataire = new $this->entityClass();
+            $col = $row['prestataire'];
 
-           foreach ($this->attributes as $attribute) {
-               if (array_key_exists($attribute, $col)) {
-                   $setter = 'set'.$attribute;
-                   $prestataire->$setter($col[$attribute]);
-               }
-           }
+            foreach ($this->attributes as $attribute) {
+                if (array_key_exists($attribute, $col)) {
+                    $setter = 'set'.$attribute;
+                    $prestataire->$setter($col[$attribute]);
+                }
+            }
 
-           // @TODO use CommentDenormalizer ?
-           if (array_key_exists('comments', $col)) {
-               /** @var ArrayCollection $comments */
-               $comments = $prestataire->getComments();
+            // @TODO use CommentDenormalizer ?
+            if (array_key_exists('comments', $col)) {
+                /** @var ArrayCollection $comments */
+                $comments = $prestataire->getComments();
 
-               foreach ($col['comments'] as $commentArray) {
-                   $comments->add($this->denormalizeComment($commentArray, $prestataire));
-               }
-           }
+                foreach ($col['comments'] as $commentArray) {
+                    $comments->add($this->denormalizeComment($commentArray, $prestataire));
+                }
+            }
 
-           $obj->add($prestataire);
-       }
+            $obj->add($prestataire);
+        }
 
-       return $obj;
-   }
+        return $obj;
+    }
 
-   /**
-    * {@inheritdoc}
-    */
-   public function supportsDenormalization($data, $type, $format = null)
-   {
-       return $type === $this->entityClass;
-   }
+    /**
+     * {@inheritdoc}
+     */
+    public function supportsDenormalization($data, $type, $format = null)
+    {
+        return $type === ($this->entityClass.'[]');
+    }
 }
