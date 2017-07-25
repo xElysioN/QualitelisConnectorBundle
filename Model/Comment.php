@@ -347,7 +347,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * @return Prestataire
+     * @return PrestataireInterface
      */
     public function getPrestataire()
     {
@@ -355,7 +355,7 @@ class Comment implements CommentInterface
     }
 
     /**
-     * @param string $prestataire
+     * @param PrestataireInterface $prestataire
      *
      * @return $this
      */

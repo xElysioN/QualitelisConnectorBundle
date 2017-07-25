@@ -27,6 +27,8 @@ interface PrestataireInterface
 
     /**
      * @param int $idPrestataire
+     *
+     * @return $this
      */
     public function setIdPrestataire($idPrestataire);
 
@@ -37,6 +39,8 @@ interface PrestataireInterface
 
     /**
      * @param int $nbAnsweredSurveys
+     *
+     * @return $this
      */
     public function setNbAnsweredSurveys($nbAnsweredSurveys);
 
@@ -47,6 +51,8 @@ interface PrestataireInterface
 
     /**
      * @param float $satisfactionAverage
+     *
+     * @return $this
      */
     public function setSatisfactionAverage($satisfactionAverage);
 
@@ -57,8 +63,24 @@ interface PrestataireInterface
 
     /**
      * @param ArrayCollection $comments
+     *
+     * @return $this
      */
     public function setComments($comments);
+
+    /**
+     * @param CommentInterface $comment
+     *
+     * @return $this
+     */
+    public function addComment(CommentInterface $comment);
+
+    /**
+     * @param CommentInterface $comment
+     *
+     * @return $this
+     */
+    public function removeComment(CommentInterface $comment);
 
     /**
      * @return array|null
@@ -67,6 +89,8 @@ interface PrestataireInterface
 
     /**
      * @param array|null $tagResult
+     *
+     * @return $this
      */
     public function setTagResult($tagResult);
 
@@ -77,6 +101,8 @@ interface PrestataireInterface
 
     /**
      * @param array|null $qiResult
+     *
+     * @return $this
      */
     public function setQiResult($qiResult);
 
@@ -87,6 +113,8 @@ interface PrestataireInterface
 
     /**
      * @param array|null $qiSources
+     *
+     * @return $this
      */
     public function setQiSources($qiSources);
 }

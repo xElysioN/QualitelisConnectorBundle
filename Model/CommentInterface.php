@@ -14,7 +14,7 @@ namespace Elysion\QualitelisConnectorBundle\Model;
 /**
  * Interface CommentInterface.
  *
- * @author  Maxime Cornet <xelysion@icloud.com>
+ * @author Maxime Cornet <xelysion@icloud.com>
  */
 interface CommentInterface
 {
@@ -25,6 +25,8 @@ interface CommentInterface
 
     /**
      * @param string $firstname
+     *
+     * @return $this
      */
     public function setFirstname($firstname);
 
@@ -35,6 +37,8 @@ interface CommentInterface
 
     /**
      * @param string $lastName
+     *
+     * @return $this
      */
     public function setLastName($lastName);
 
@@ -45,6 +49,8 @@ interface CommentInterface
 
     /**
      * @param string $stayStart
+     *
+     * @return $this
      */
     public function setStayStart($stayStart);
 
@@ -55,6 +61,8 @@ interface CommentInterface
 
     /**
      * @param string $stayEnd
+     *
+     * @return $this
      */
     public function setStayEnd($stayEnd);
 
@@ -65,6 +73,8 @@ interface CommentInterface
 
     /**
      * @param string $replyDate
+     *
+     * @return $this
      */
     public function setReplyDate($replyDate);
 
@@ -75,6 +85,8 @@ interface CommentInterface
 
     /**
      * @param int $note
+     *
+     * @return $this
      */
     public function setNote($note);
 
@@ -85,6 +97,8 @@ interface CommentInterface
 
     /**
      * @param string $comment
+     *
+     * @return $this
      */
     public function setComment($comment);
 
@@ -95,6 +109,8 @@ interface CommentInterface
 
     /**
      * @param string $commentTitle
+     *
+     * @return $this
      */
     public function setCommentTitle($commentTitle);
 
@@ -105,6 +121,8 @@ interface CommentInterface
 
     /**
      * @param bool $pinned
+     *
+     * @return $this
      */
     public function setPinned($pinned);
 
@@ -115,6 +133,8 @@ interface CommentInterface
 
     /**
      * @param string $profile1
+     *
+     * @return $this
      */
     public function setProfile1($profile1);
 
@@ -125,6 +145,8 @@ interface CommentInterface
 
     /**
      * @param string $profile2
+     *
+     * @return $this
      */
     public function setProfile2($profile2);
 
@@ -135,6 +157,8 @@ interface CommentInterface
 
     /**
      * @param string $profile3
+     *
+     * @return $this
      */
     public function setProfile3($profile3);
 
@@ -145,6 +169,8 @@ interface CommentInterface
 
     /**
      * @param string $idSejour
+     *
+     * @return $this
      */
     public function setIdSejour($idSejour);
 
@@ -155,6 +181,20 @@ interface CommentInterface
 
     /**
      * @param array|null $replyMail
+     *
+     * @return $this
      */
     public function setReplyMail($replyMail);
+
+    /**
+     * @return PrestataireInterface
+     */
+    public function getPrestataire();
+
+    /**
+     * @param PrestataireInterface $prestataire
+     *
+     * @return $this
+     */
+    public function setPrestataire($prestataire);
 }

@@ -59,10 +59,14 @@ class Prestataire implements PrestataireInterface
 
     /**
      * @param int $idPrestataire
+     *
+     * @return $this
      */
     public function setIdPrestataire($idPrestataire)
     {
         $this->idPrestataire = $idPrestataire;
+
+        return $this;
     }
 
     /**
@@ -75,10 +79,14 @@ class Prestataire implements PrestataireInterface
 
     /**
      * @param int $nbAnsweredSurveys
+     *
+     * @return $this
      */
     public function setNbAnsweredSurveys($nbAnsweredSurveys)
     {
         $this->nbAnsweredSurveys = $nbAnsweredSurveys;
+
+        return $this;
     }
 
     /**
@@ -91,10 +99,14 @@ class Prestataire implements PrestataireInterface
 
     /**
      * @param float $satisfactionAverage
+     *
+     * @return $this
      */
     public function setSatisfactionAverage($satisfactionAverage)
     {
         $this->satisfactionAverage = $satisfactionAverage;
+
+        return $this;
     }
 
     /**
@@ -106,29 +118,41 @@ class Prestataire implements PrestataireInterface
     }
 
     /**
-     * @param ArrayCollection<Comment> $comments
+     * @param ArrayCollection $comments
+     *
+     * @return $this
      */
     public function setComments($comments)
     {
         $this->comments = $comments;
+
+        return $this;
     }
 
     /**
-     * @param Comment $comment
+     * @param CommentInterface $comment
+     *
+     * @return $this
      */
-    public function addComment(Comment $comment)
+    public function addComment(CommentInterface $comment)
     {
         $comment->setPrestataire($this);
         $this->comments->add($comment);
+
+        return $this;
     }
 
     /**
-     * @param Comment $comment
+     * @param CommentInterface $comment
+     *
+     * @return $this
      */
-    public function removeComment(Comment $comment)
+    public function removeComment(CommentInterface $comment)
     {
         $comment->setPrestataire($this);
         $this->comments->remove($comment);
+
+        return $this;
     }
 
     /**
@@ -141,10 +165,14 @@ class Prestataire implements PrestataireInterface
 
     /**
      * @param array|null $tagResult
+     *
+     * @return $this
      */
     public function setTagResult($tagResult)
     {
         $this->tagResult = json_encode($tagResult);
+
+        return $this;
     }
 
     /**
@@ -157,10 +185,14 @@ class Prestataire implements PrestataireInterface
 
     /**
      * @param array|null $qiResult
+     *
+     * @return $this
      */
     public function setQiResult($qiResult)
     {
         $this->qiResult = json_encode($qiResult);
+
+        return $this;
     }
 
     /**
@@ -173,9 +205,13 @@ class Prestataire implements PrestataireInterface
 
     /**
      * @param array|null $qiSources
+     *
+     * @return $this
      */
     public function setQiSources($qiSources)
     {
         $this->qiSources = json_encode($qiSources);
+
+        return $this;
     }
 }
