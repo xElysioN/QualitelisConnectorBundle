@@ -201,7 +201,7 @@ class Comment implements CommentInterface
      */
     public function setComment($comment)
     {
-        $this->comment = utf8_encode($comment);
+        $this->comment = mb_convert_encoding($comment, 'UTF-8', 'auto');
 
         return $this;
     }
@@ -221,7 +221,7 @@ class Comment implements CommentInterface
      */
     public function setCommentTitle($commentTitle)
     {
-        $this->commentTitle = $commentTitle;
+        $this->commentTitle = mb_convert_encoding(substr($commentTitle, 0, 254), 'UTF-8', 'auto');
 
         return $this;
     }
